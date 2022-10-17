@@ -3,15 +3,17 @@ import "tailwindcss/tailwind.css";
 import React from "react";
 import { createContext, useState } from "react";
 
+import Layout from "../components/Layout";
+
 export const AnswerContext = createContext("");
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   const [message, setMessage] = useState([]);
   return (
     <AnswerContext.Provider value={{ message, setMessage }}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </AnswerContext.Provider>
   );
 }
-
-export default MyApp;
